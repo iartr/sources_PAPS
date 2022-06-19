@@ -1,0 +1,27 @@
+.chat-window-container {
+	justify-content: space-between;
+  flex: 1;
+  width: 100%;
+}
+
+.message-list-container {
+  height: auto;
+  width: 100%;
+}
+
+.message-input-container {
+  flex: 1;
+  justify-content: flex-end;
+  height: 10%;
+}
+
+.chat-window-header {
+  height: 75px;
+  align-content: center;
+  align-items: center;
+  vertical-align: auto;
+}
+
+.chat-title {
+  vertical-align: auto;
+}

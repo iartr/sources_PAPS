@@ -1,0 +1,48 @@
+version: "3.9"
+services:
+  chat-server:
+    build:
+      context: chat-app-server
+      dockerfile: ChatAppServer/Dockerfile
+    container_name: chat-server
+    ports:
+      - 5002:80
+    depends_on: 
+      - chat-postgres
+
+  # chat-angular-client:
+  #   build:
+  #     context: ./chat-app-angular-client
+  #     target: development
+  #   volumes:
+  #     - ./chat-app-angular-client/src:/app/src
+  #   container_name: chat-angular-client
+  #   ports:
+  #     - 4200:4200
+  #     - 49153:49153
+  #   command: ["npm", "start"]
+
+  chat-react-client:
+    build:
+      context: ./chat-app-react-client
+      target: development
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./chat-app-react-client/src:/app/src
+    container_name: chat-react-client
+    ports:
+      - 3000:3000
+    command: ["npm", "start"]
+      
+  chat-postgres:
+    container_name: chat-postgres
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/db:/var/lib/postgres/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres

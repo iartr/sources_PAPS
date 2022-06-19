@@ -1,0 +1,14 @@
+.chat-card {
+	align-items: flex-start;	
+}
+
+.chat-name {
+	align-self: flex-start;
+	align-content: flex-start;
+	font-size: 14px;
+}
+
+.chat-last-message {
+	align-content: flex-start;
+	font-size: 12px;
+}
